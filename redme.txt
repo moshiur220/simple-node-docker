@@ -3,7 +3,7 @@
 3. docker container build (docker run --rm -d -p 3000:4000 --name container-name image-name)
 4. docker stop (docker stop container-id)
 5. docker volume (docker run -p <host-port>:<container-port> -v <host-directory>:<container-directory> <image-name>:<tag>)
-(docker run -p 8080:3000 -v $(pwd)/data:/app/data my-react-app:v1.0)
+(docker run --rm -d -p 4000:3000 -v $(pwd):/app --name node-container my-nodejs-app)
 6. docker container bun ENV variable (docker run --rm -d -p 3000:4000 -e PORT='4000' --name container-name image-name)
 7. docker it (docker exec -it container-id bash)
 8. docker logs (docker logs container-id)
