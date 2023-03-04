@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  frontend:
+    build: ./docker-react
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./docker-react:/app  
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+  backend:
+    build: ./node-docker
+    ports:
+      - "4000:5000"
+    env_file:
+      .env
+    volumes:
+      - ./node-docker:/app  
+    depends_on:
+      - database
+    networks:
+      - app_network
+
+  database:
+    image: mongo:latest
+    container_name: database
+    restart: always
+    env_file:
+      .env
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - app_network
+
+networks:
+  app_network:
+
+volumes:
+  mongo_data:

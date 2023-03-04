@@ -8,3 +8,5 @@
 7. docker it (docker exec -it container-id bash)
 8. docker logs (docker logs container-id)
 9. docker env file location (--env-file ./.env)
+
+docker run --rm -d -p 3000:4000 -e PORT='4000' -e MONGO_USERNAME=root -e MONGO_PASSWORD=testpass -e MONGO_HOSTNAME=127.0.0.1 -e MONGO_PORT=27017 -e MONGO_DB=product --name node-container node-image
